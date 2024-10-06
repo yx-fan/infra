@@ -1,0 +1,11 @@
+# Base image for MongoDB
+FROM mongo:latest
+
+# Copy the initialization script for shard1
+COPY init-shard1.sh /init-shard1.sh
+
+# Make the script executable
+RUN chmod +x /init-shard1.sh
+
+# Default command
+# CMD ["mongod", "--shardsvr", "--replSet", "shardReplSet1", "--port", "27019", "--bind_ip_all"]

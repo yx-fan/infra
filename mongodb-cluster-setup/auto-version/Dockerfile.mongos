@@ -1,0 +1,11 @@
+# Base image for MongoDB
+FROM mongo:latest
+
+# Copy the initialization script for mongos
+COPY init-mongos.sh /init-mongos.sh
+
+# Make the script executable
+RUN chmod +x /init-mongos.sh
+
+# Default command
+# CMD ["mongos", "--configdb", "configReplSet/configsvr:27018", "--bind_ip_all", "--port", "27017"]

@@ -1,0 +1,11 @@
+# Base image for MongoDB
+FROM mongo:latest
+
+# Copy the initialization script for configsvr
+COPY init-configsvr.sh /init-configsvr.sh
+
+# Make the script executable
+RUN chmod +x /init-configsvr.sh
+
+# Default command
+# CMD ["bash", "-c", "mongod --configsvr --replSet configReplSet --port 27018 --bind_ip_all && /init-configsvr.sh && tail -f /dev/null"]
